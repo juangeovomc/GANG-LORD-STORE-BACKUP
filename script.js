@@ -6,7 +6,89 @@ document.addEventListener('DOMContentLoaded', function() {
     initProductInteractions();
     initAnimations();
     initFormHandling();
+    initBootstrapAnimations();
 });
+
+// Bootstrap 5 Animations
+function initBootstrapAnimations() {
+    // Intersection Observer for animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observe all product cards
+    document.querySelectorAll('.product-card').forEach(card => {
+        observer.observe(card);
+    });
+}
+
+// Funciones adicionales para la vista rápida profesional
+function setupThumbnails() {
+    const thumbnailsContainer = document.getElementById('thumbnailsContainer');
+    const imageIndicators = document.getElementById('imageIndicators');
+    
+    if (!thumbnailsContainer || !imageIndicators) return;
+    
+    // Clear existing content
+    thumbnailsContainer.innerHTML = '';
+    imageIndicators.innerHTML = '';
+    
+    productImages.forEach((image, index) => {
+        // Create thumbnail
+        const thumbnail = document.createElement('img');
+        thumbnail.src = image;
+        thumbnail.className = `thumbnail ${index === currentImageIndex ? 'active' : ''}`;
+        thumbnail.onclick = () => goToImage(index);
+        thumbnailsContainer.appendChild(thumbnail);
+        
+        // Create indicator
+        const indicator = document.createElement('div');
+        indicator.className = `image-indicator ${index === currentImageIndex ? 'active' : ''}`;
+        indicator.onclick = () => goToImage(index);
+        imageIndicators.appendChild(indicator);
+    });
+}
+
+function goToImage(index) {
+    if (index < 0 || index >= productImages.length) return;
+    
+    currentImageIndex = index;
+    updateImage();
+    updateGalleryButtons();
+    updateThumbnails();
+    updateIndicators();
+}
+
+function updateThumbnails() {
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    thumbnails.forEach((thumb, index) => {
+        thumb.classList.toggle('active', index === currentImageIndex);
+    });
+}
+
+function updateIndicators() {
+    const indicators = document.querySelectorAll('.image-indicator');
+    indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === currentImageIndex);
+    });
+}
+
+// Función para scroll suave a productos
+function scrollToProducts() {
+    document.getElementById('products').scrollIntoView({
+        behavior: 'smooth'
+    });
+}
 
 // Navigation functionality
 function initNavigation() {
@@ -105,6 +187,7 @@ function initProductInteractions() {
         if (quickViewBtn) {
             quickViewBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
+                console.log('Botón de vista rápida clickeado');
                 showProductModal(card);
             });
         }
@@ -260,6 +343,8 @@ let currentImageIndex = 0;
 let productImages = [];
 
 function showProductModal(productCard) {
+    console.log('Abriendo modal para producto:', productCard);
+    
     // Get product data
     const productName = productCard.querySelector('.product-name').textContent;
     const productDescription = productCard.querySelector('.product-description').textContent;
@@ -267,6 +352,8 @@ function showProductModal(productCard) {
     const oldPrice = productCard.querySelector('.old-price');
     const productImage = productCard.querySelector('.product-img').src;
     const productBadge = productCard.querySelector('.product-badge');
+    
+    console.log('Datos del producto:', { productName, productDescription, productPrice });
     
     // Get multiple images from data attribute
     const imagesData = productCard.getAttribute('data-images');
@@ -312,20 +399,12 @@ function showProductModal(productCard) {
     document.getElementById('quickViewModal').style.display = 'flex';
     document.body.style.overflow = 'hidden';
     
-    // Add event listeners for modal buttons
+    // Add event listener for modal button
     const addToCartBtn = document.querySelector('.modal-add-cart');
-    const viewDetailsBtn = document.querySelector('.modal-view-details');
     
     if (addToCartBtn) {
         addToCartBtn.onclick = function() {
             showNotification(`${productName} agregado al carrito!`, 'success');
-            closeQuickView();
-        };
-    }
-    
-    if (viewDetailsBtn) {
-        viewDetailsBtn.onclick = function() {
-            showNotification('Redirigiendo a página de detalles...', 'info');
             closeQuickView();
         };
     }
@@ -336,37 +415,15 @@ function closeQuickView() {
     document.body.style.overflow = 'auto';
 }
 
-// Funciones para la galería de imágenes
+// Funciones para la galería de imágenes profesional
 function setupImageGallery() {
-    const galleryDots = document.getElementById('galleryDots');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
+    console.log('Configurando galería profesional con', productImages.length, 'imágenes');
     
-    console.log('Configurando galería con', productImages.length, 'imágenes');
+    // Setup thumbnails and indicators
+    setupThumbnails();
     
-    // Limpiar dots existentes
-    galleryDots.innerHTML = '';
-    
-    // Solo mostrar controles si hay más de una imagen
-    if (productImages.length > 1) {
-        // Crear dots para cada imagen
-        productImages.forEach((_, index) => {
-            const dot = document.createElement('div');
-            dot.className = `gallery-dot ${index === 0 ? 'active' : ''}`;
-            dot.addEventListener('click', () => goToImage(index));
-            galleryDots.appendChild(dot);
-        });
-        
-        // Mostrar botones de navegación
-        if (prevBtn) prevBtn.style.display = 'flex';
-        if (nextBtn) nextBtn.style.display = 'flex';
-    } else {
-        // Ocultar controles si solo hay una imagen
-        if (prevBtn) prevBtn.style.display = 'none';
-        if (nextBtn) nextBtn.style.display = 'none';
-    }
-    
-    // Actualizar botones
+    // Update initial image
+    updateImage();
     updateGalleryButtons();
 }
 
@@ -382,18 +439,21 @@ function changeImage(direction) {
     
     updateImage();
     updateGalleryButtons();
-    updateGalleryDots();
+    updateThumbnails();
+    updateIndicators();
 }
 
 function goToImage(index) {
     currentImageIndex = index;
     updateImage();
     updateGalleryButtons();
-    updateGalleryDots();
+    updateThumbnails();
+    updateIndicators();
 }
 
 function updateImage() {
     const modalImage = document.getElementById('modalProductImage');
+    
     modalImage.src = productImages[currentImageIndex];
     
     // Efecto de transición
@@ -409,16 +469,16 @@ function updateGalleryButtons() {
     
     // Solo mostrar botones si hay más de una imagen
     if (productImages.length <= 1) {
-        prevBtn.style.display = 'none';
-        nextBtn.style.display = 'none';
+        if (prevBtn) prevBtn.style.display = 'none';
+        if (nextBtn) nextBtn.style.display = 'none';
     } else {
-        prevBtn.style.display = 'flex';
-        nextBtn.style.display = 'flex';
+        if (prevBtn) prevBtn.style.display = 'flex';
+        if (nextBtn) nextBtn.style.display = 'flex';
     }
 }
 
 function updateGalleryDots() {
-    const dots = document.querySelectorAll('.gallery-dot');
+    const dots = document.querySelectorAll('.image-dot');
     dots.forEach((dot, index) => {
         dot.classList.toggle('active', index === currentImageIndex);
     });
