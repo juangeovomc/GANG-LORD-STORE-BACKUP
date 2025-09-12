@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GangLord - Catálogo de Camisetas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                
+                <h1>GANG<span class="accent">LORD</span></h1>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link">Inicio</a>
+                <a href="#products" class="nav-link">Productos</a>
+                <a href="#about" class="nav-link">Nosotros</a>
+                <a href="#contact" class="nav-link">Contacto</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="title-line">ESSENCE</span>
+                    <span class="title-line accent">AND</span>
+                    <span class="title-line">LOYALTY</span>
+                </h1>
+                <p class="hero-subtitle">Calidad premium, diseño minimalista, estilo unico</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="scrollToProducts()">Ver Colección</button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card">
+                    <!-- Imagen estática arriba -->
+                    <div class="hero-image-container">
+                        <img src="assets/narva.jpeg" alt="GangLord Product" class="hero-image">
+                        <div class="image-overlay">
+                            <div class="image-badge">PREMIUM</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Logo 3D abajo -->
+                    <div class="logo-3d-section">
+                        <div class="logo-3d-container">
+                            <div class="logo-3d">
+                                <div class="logo-text-3d">
+                                    <span class="letter letter-g">G</span>
+                                    <span class="letter letter-a">A</span>
+                                    <span class="letter letter-n">N</span>
+                                    <span class="letter letter-g2">G</span>
+                                    <span class="letter letter-l">L</span>
+                                    <span class="letter letter-o">O</span>
+                                    <span class="letter letter-r">R</span>
+                                    <span class="letter letter-d">D</span>
+                                </div>
+                                <div class="logo-glow"></div>
+                                <div class="logo-shadow"></div>
+                                <div class="particles">
+                                    <div class="particle"></div>
+                                    <div class="particle"></div>
+                                    <div class="particle"></div>
+                                    <div class="particle"></div>
+                                    <div class="particle"></div>
+                                    <div class="particle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-bg">
+            <div class="grid-overlay"></div>
+            <div class="floating-elements">
+                <div class="floating-element"></div>
+                <div class="floating-element"></div>
+                <div class="floating-element"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestra Colección</h2>
+                <p class="section-subtitle">Diseño minimalista, calidad excepcional, estilo atemporal</p>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card" data-product="1" data-images='["assets/dogfrente.jpeg", "assets/dogatras.jpeg"]'>
+                    <div class="product-image">
+                        <img src="assets/dogfrente.jpeg" alt="Doberman Squad - Frente" class="product-img">
+                        <div class="product-badge bestseller">MAS COMPRADO</div>
+                    
+                        <div class="product-overlay">
+                            <button class="btn-quick-view">Vista Rápida</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Doberman Squad</h3>
+                        <p class="product-description">Camiseta básica premium en algodón 100%</p>
+                        <div class="product-price">
+                            <span class="price">$130.000</span>
+                            <span class="old-price">$150.000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-product="2" data-images='["assets/darkfrente.jpeg", "assets/darkatras.jpeg"]'>
+                    <div class="product-image">
+                        <img src="assets/darkfrente.jpeg" alt="Dark In Mi Own Way" class="product-img">
+                    
+                        <div class="product-overlay">
+                            <button class="btn-quick-view">Vista Rápida</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Dark In Mi Own Way</h3>
+                        <p class="product-description">Elegancia atemporal en blanco puro</p>
+                        <div class="product-price">
+                            <span class="price">$150.000</span>
+                            <span class="old-price">$170.000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-product="3" data-images='["assets/narva.jpeg"]'>
+                    <div class="product-image">
+                        <img src="assets/narva.jpeg" alt="Charcoal Grey" class="product-img">
+                        <div class="product-overlay">
+                            <button class="btn-quick-view">Vista Rápida</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">I Shine More Than My Chains</h3>
+                        <p class="product-description">Edición limitada con acabados premium</p>
+                        <div class="product-price">
+                            <span class="price">$140.000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-product="4" data-images='["assets/dogfrente.jpeg"]'>
+                    <div class="product-image">
+                        <img src="assets/dogfrente.jpeg" alt="Premium Edition" class="product-img">
+                        <div class="product-badge">LIMITADO</div>
+                        <div class="product-overlay">
+                            <button class="btn-quick-view">Vista Rápida</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Turnal</h3>
+                        <p class="product-description">Edición limitada con acabados premium</p>
+                        <div class="product-price">
+                            <span class="price">$130.000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">Sobre GangLord</h2>
+                    <p class="about-description">
+                        Comprometidos con la excelencia en cada detalle. Nuestras camisetas combinan 
+                        materiales premium con diseño minimalista, creando piezas atemporales que 
+                        trascienden las tendencias. Calidad, elegancia y sofisticación en cada prenda.
+                    </p>
+                    <div class="stats">
+                        <div class="stat">
+                            <h3>10K+</h3>
+                            <p>Clientes Satisfechos</p>
+                        </div>
+                        <div class="stat">
+                            <h3>50+</h3>
+                            <p>Diseños Únicos</p>
+                        </div>
+                        <div class="stat">
+                            <h3>100%</h3>
+                            <p>Calidad Premium</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="brand-showcase">
+                        <div class="showcase-item">
+                            <i class="fas fa-award"></i>
+                            <h4>Calidad Premium</h4>
+                        </div>
+                        <div class="showcase-item">
+                            <i class="fas fa-leaf"></i>
+                            <h4>Materiales Sostenibles</h4>
+                        </div>
+                        <div class="showcase-item">
+                            <i class="fas fa-shipping-fast"></i>
+                            <h4>Envío Express</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2 class="section-title">Conecta con Nosotros</h2>
+                    <p>Descubre la excelencia en cada detalle</p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fab fa-instagram"></i>
+                            <span>@ganglord_official</span>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@ganglord.com</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="Tu nombre" required>
+                        <input type="email" placeholder="Tu email" required>
+                        <textarea placeholder="Tu mensaje" rows="4" required></textarea>
+                        <button type="submit" class="btn-primary">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/logo.png" alt="GangLord Logo" class="footer-logo-img">
+                    <h3>GANG<span class="accent">LORD</span></h3>
+                    <p>Excelencia en diseño desde 2024</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Productos</h4>
+                        <a href="#">Camisetas</a>
+                        <a href="#">Hoodies</a>
+                        <a href="#">Accesorios</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Soporte</h4>
+                        <a href="#">Ayuda</a>
+                        <a href="#">Envíos</a>
+                        <a href="#">Devoluciones</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 GangLord. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Vista Rápida -->
+    <div id="quickViewModal" class="quick-view-modal">
+        <div class="modal-overlay" onclick="closeQuickView()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeQuickView()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalProductImage" src="" alt="Producto" class="modal-img">
+                    <div class="modal-badge" id="modalBadge"></div>
+                    <div class="image-gallery">
+                        <button class="gallery-btn prev-btn" onclick="changeImage(-1)">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="gallery-btn next-btn" onclick="changeImage(1)">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <div class="gallery-dots" id="galleryDots"></div>
+                    </div>
+                </div>
+                <div class="modal-info">
+                    <h3 id="modalProductName" class="modal-title"></h3>
+                    <p id="modalProductDescription" class="modal-description"></p>
+                    <div class="modal-price">
+                        <span id="modalPrice" class="modal-price-current"></span>
+                        <span id="modalOldPrice" class="modal-price-old"></span>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="btn-primary modal-add-cart">Añadir al Carrito</button>
+                        
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
