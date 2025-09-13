@@ -5,6 +5,95 @@
     box-sizing: border-box;
 }
 
+/* Override Bootstrap styles that conflict */
+a {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+a:hover {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary) !important;
+}
+
+p, span, div {
+    color: var(--text-secondary) !important;
+}
+
+/* Prevent text duplication */
+.hero-text h1 {
+    display: block !important;
+}
+
+.hero-text h1 span {
+    display: block !important;
+}
+
+/* Corregir colores específicos que aparecen en azul */
+.price {
+    color: var(--text-primary) !important;
+}
+
+.old-price {
+    color: var(--text-primary) !important;
+}
+
+.product-name {
+    color: var(--text-primary) !important;
+}
+
+.product-description {
+    color: var(--text-primary) !important;
+}
+
+.nav-link {
+    color: var(--text-secondary) !important;
+}
+
+.nav-link:hover {
+    color: var(--text-primary) !important;
+}
+
+/* Forzar colores en elementos específicos */
+.text-primary {
+    color: var(--text-primary) !important;
+}
+
+.text-secondary {
+    color: var(--text-secondary) !important;
+}
+
+.text-white {
+    color: #ffffff !important;
+}
+
+.text-muted {
+    color: var(--text-primary) !important;
+}
+
+/* Corregir Bootstrap link colors */
+a.text-primary {
+    color: var(--text-primary) !important;
+}
+
+a.text-secondary {
+    color: var(--text-secondary) !important;
+}
+
+/* Asegurar que no haya duplicación de texto */
+.hero-text {
+    position: relative;
+}
+
+.hero-text::before,
+.hero-text::after {
+    display: none !important;
+}
+
 :root {
     --primary-bg: #000000;
     --secondary-bg: #1a1a1a;
@@ -3786,38 +3875,74 @@ body {
     }
 }
 
-/* TÍTULO NUEVO COMPLETAMENTE BLANCO */
+/* TÍTULO NUEVO COMPLETAMENTE BLANCO - FORZADO PARA GITHUB PAGES */
 .main-title {
-    font-family: 'Inter', sans-serif;
-    font-size: 4rem;
-    font-weight: 300;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-    letter-spacing: 2px;
-    text-align: center;
-}
-
-.title-word {
-    display: block;
-    color: #ffffff;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 4rem !important;
+    font-weight: 300 !important;
+    line-height: 1.1 !important;
+    margin-bottom: 1.5rem !important;
+    letter-spacing: 2px !important;
+    text-align: center !important;
+    color: #ffffff !important;
     text-shadow: 
         0 0 10px rgba(255, 255, 255, 0.8),
         0 0 20px rgba(255, 255, 255, 0.5),
-        0 0 30px rgba(255, 255, 255, 0.3);
-    opacity: 0;
-    transform: translateY(50px);
-    animation: slideInUp 0.8s ease forwards;
+        0 0 30px rgba(255, 255, 255, 0.3) !important;
 }
 
-.title-word:nth-child(1) { animation-delay: 0.2s; }
-.title-word:nth-child(2) { animation-delay: 0.4s; }
-.title-word:nth-child(3) { animation-delay: 0.6s; }
+.title-word {
+    display: block !important;
+    color: #ffffff !important;
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.8),
+        0 0 20px rgba(255, 255, 255, 0.5),
+        0 0 30px rgba(255, 255, 255, 0.3) !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    animation: slideInUp 0.8s ease forwards !important;
+}
+
+.title-word:nth-child(1) { animation-delay: 0.2s !important; }
+.title-word:nth-child(2) { animation-delay: 0.4s !important; }
+.title-word:nth-child(3) { animation-delay: 0.6s !important; }
 
 .title-center {
-    font-weight: 700;
+    font-weight: 700 !important;
+    color: #ffffff !important;
     text-shadow: 
         0 0 15px rgba(255, 255, 255, 1),
         0 0 30px rgba(255, 255, 255, 0.7),
-        0 0 45px rgba(255, 255, 255, 0.4);
-    animation: slideInUp 0.8s ease forwards, accentPulse 2s ease-in-out infinite alternate 1s;
+        0 0 45px rgba(255, 255, 255, 0.4) !important;
+    animation: slideInUp 0.8s ease forwards, accentPulse 2s ease-in-out infinite alternate 1s !important;
+}
+
+/* Forzar estilos del título principal */
+.hero-text h1 {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 4rem !important;
+    font-weight: 300 !important;
+    line-height: 1.1 !important;
+    margin-bottom: 1.5rem !important;
+    letter-spacing: 2px !important;
+    text-align: center !important;
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.8),
+        0 0 20px rgba(255, 255, 255, 0.5),
+        0 0 30px rgba(255, 255, 255, 0.3) !important;
+}
+
+.hero-text h1 span {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.8),
+        0 0 20px rgba(255, 255, 255, 0.5),
+        0 0 30px rgba(255, 255, 255, 0.3) !important;
 }
